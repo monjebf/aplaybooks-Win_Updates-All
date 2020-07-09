@@ -1,6 +1,6 @@
 ---
-- name: Install Windows Update
-  hosts: "{{ win_vm }}"
+- name: WindowsUpdates
+  hosts: "{{ Windows_Servers }}"
   gather_facts: False
 
   roles:
