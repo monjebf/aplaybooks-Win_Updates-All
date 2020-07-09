@@ -1,8 +1,5 @@
 ---
-
-tasks:
- 
-   # Check if there are missing updates
+ # Check if there are missing updates
     – block:
         – name: Check for missing updates.
           win_updates: state=searched
