@@ -1,6 +1,6 @@
 ---
 # update-windows-test.yaml
-- hosts: testservers
+
   vars:
     win_updates_categories:
       - SecurityUpdates
