@@ -79,10 +79,9 @@
 
 - name: Send Email with Report
   mail:
-    host: smtp.gmail.com
+    host: smtp-relay.gmail.com
     port: 587
-    username: "{{ gmail_account }}"
-    password: "{{ gmail_account_password }}"
+    from: Test@monje.gg
     to: brett.monj@gmail.com>
     subject: "Ansible Report"
     body: "The list of required Windows Update for the Windows VMs can be found in the attached file"
