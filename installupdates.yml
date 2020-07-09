@@ -1,5 +1,5 @@
 ---
-- hosts: TestMachine
+
 tasks:
  
    # Check if there are missing updates
