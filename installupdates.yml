@@ -1,28 +1,31 @@
 ---
- # Check if there are missing updates
-    – block:
-        – name: Check for missing updates.
-          win_updates: state=searched
-          register: update_count
- 
-    #Install missing updates only if at least one is missing
-    – block:
-        – name: Install missing updates.
-          win_updates:
-            category_names:
-              – Application
-              – Connectors
-              – DefinitionUpdates
-              – DeveloperKits
-              – FeaturePacks
-              – Guidance
-              – ServicePacks
-              – Tools
-              – UpdateRollups
-              – CriticalUpdates
-              – SecurityUpdates
-          register: update_result
-        – name: Reboot, if needed.
-          win_reboot:
-          when: update_result.reboot_required
-      when: update_count.found_update_count|int >= 1
+# update-windows-test.yaml
+- hosts: testservers
+  vars:
+    win_updates_categories:
+      - SecurityUpdates
+      - CriticalUpdates
+      - UpdateRollups
+      - DefinitionUpdates
+      - Updates
+
+  tasks:
+    # Check for missing updates
+    - name: check for missing updates
+      win_updates: 
+        state: searched
+        catagory_names: "{{ win_updates_categories }}"
+      register: update_count
+      ignore_errors: yes
+    
+    - name: reboot if required
+      win_reboot:
+      when: update_count.reboot_required
+      ignore_errors: yes
+    
+    # Install updates    
+    - name: install updates
+      win_updates:
+        catagory_names: "{{ win_updates_categories }}"
+        reboot: yes
+      register: update_result
