@@ -81,8 +81,8 @@
   mail:
     host: smtp-relay.gmail.com
     port: 587
-    from: Test@monje.gg
-    to: brett.monj@gmail.com>
+    from: Brett@monje.gg
+    to: Brett@monje.gg
     subject: "Ansible Report"
     body: "The list of required Windows Update for the Windows VMs can be found in the attached file"
     attach:
