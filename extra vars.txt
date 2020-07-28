@@ -1,0 +1,29 @@
+Application
+Connectors
+CriticalUpdates
+DefinitionUpdates
+DeveloperKits
+FeaturePacks
+Guidance
+SecurityUpdates
+ServicePacks
+Tools
+UpdateRollups
+Updates
+Upgrades
+
+Extra Vars
+---
+win_vm: {win_vm}
+win_update_category: {win_update_category}
+automatic_reboot_after_update: 'yes'
+reboot: 'yes'
+
+
+Hosts
+---
+ansible_host: 192.168.8.6
+ansible_connection: winrm
+ansible_port: 5986
+ansible_winrm_server_cert_validation: ignore
+ansible_winrm_transport: credssp
